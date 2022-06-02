@@ -1,7 +1,6 @@
 import React from "react";
 import spacex from "../img/spacex.jpg";
 
-
 function Hero({ header, text }) {
   return (
     <>
@@ -12,10 +11,8 @@ function Hero({ header, text }) {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
-           
-              <h1 className="mb-5 text-8xl font-bold ">{header}</h1>
-              <p>{text}</p>
-            
+            <h1 className="mb-5 text-8xl font-bold ">{header}</h1>
+            <p>{text}</p>
           </div>
         </div>
       </div>

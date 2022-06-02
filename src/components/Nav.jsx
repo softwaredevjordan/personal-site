@@ -1,10 +1,8 @@
-import { accent } from "daisyui/src/colors";
 import React, { useEffect, useState } from "react";
 import { FaReact, FaTabletAlt, FaEdit } from "react-icons/fa";
-import spacex from "../img/spacex.jpg";
-
 import Hero from "./Hero";
-function Nav({}) {
+import { Link } from "react-router-dom";
+function Nav() {
   const [header, setHeader] = useState("");
   const [text, setText] = useState("");
   const [isHome, setIsHome] = useState("");
@@ -40,8 +38,10 @@ function Nav({}) {
       case "":
         setText("");
         break;
+      default:
+        setText("");
     }
-  });
+  }, [header]);
 
   useEffect(() => {
     if (window.location.pathname === "/") {
@@ -49,7 +49,7 @@ function Nav({}) {
     } else {
       setIsHome(false);
     }
-  });
+  }, []);
 
   const contact = "Let's Talk";
   const about = "Dive deeper";
@@ -57,36 +57,51 @@ function Nav({}) {
   const home = "Back to Home";
   return (
     <>
-      <div className="navbar bg-base-100 shadow-md mb-8">
-        <div className="flex-1">
-          <a
-            href="#"
-            className="btn btn-ghost normal-case text-3xl"
+      <div className="navbar bg-base-100 shadow-md mb-8 sm:pr-1">
+        <div className="flex-auto mr-1">
+          <Link
+            to="#"
+            className="btn btn-ghost normal-case p-0 text-xl md:text-4xl  md:p-1"
             onMouseEnter={mouseEnterHome}
             onMouseLeave={mouseLeave}
           >
             SDJ
-          </a>
+          </Link>
         </div>
-        <div className="flex-none">
-          <ul className="menu menu-horizontal p-0 text-2xl">
-            <li>
-              <a href="#" onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+        <div className="flex-col-reverse shrink ">
+          <ul className="menu menu-horizontal text-sm md:text-xl md:pr-5 ">
+            <li className="">
+              <Link
+                to="/"
+                className="p-1"
+                onMouseEnter={mouseEnter}
+                onMouseLeave={mouseLeave}
+              >
                 <FaTabletAlt className="text-accent" size={20} />
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
-                <FaReact className="text-accent" size={20} />
+              <Link
+                to="/"
+                className="p-1"
+                onMouseEnter={mouseEnter}
+                onMouseLeave={mouseLeave}
+              >
+                <FaReact className="text-accent " size={20} />
                 Projects
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+              <Link
+                to="/"
+                className="p-1"
+                onMouseEnter={mouseEnter}
+                onMouseLeave={mouseLeave}
+              >
                 <FaEdit className="text-accent" size={20} />
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
