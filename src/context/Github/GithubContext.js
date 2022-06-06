@@ -1,9 +1,6 @@
 import { useReducer, createContext } from "react";
 import githubReducer from "./GithubReducer";
 
-const GITHUB_URL = process.env.REACT_APP_GITHUB_URL;
-const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
-
 const GithubContext = createContext();
 
 export const GithubProvider = ({ children }) => {
@@ -14,19 +11,39 @@ export const GithubProvider = ({ children }) => {
     repoLoading: false,
   };
 
+  const GITHUB_URL = process.env.REACT_APP_GITHUB_URL;
+  const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
   const fetchUser = async (userName) => {
+    const url = `${GITHUB_URL}/users/${userName}`;
     dispatch({ type: "LOAD_USER" });
-    const response = await fetch(`${GITHUB_URL}/users/${userName}`, {
+    return await fetch(url, {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
       },
+    }).then((res) => {
+      res.json().then((res) => {
+        dispatch({
+          type: "GET_USER",
+          payload: res,
+        });
+      });
     });
+  };
 
-    const data = await response.json();
-
-    dispatch({
-      type: "GET_USER",
-      payload: data,
+  const fetchRepos = async (userName) => {
+    const url = `${GITHUB_URL}/users/${userName}/repos`;
+    dispatch({ type: "LOAD_REPOS" });
+    return await fetch(url, {
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+      },
+    }).then((res) => {
+      res.json().then((res) => {
+        dispatch({
+          type: "GET_REPOS",
+          payload: res,
+        });
+      });
     });
   };
 
@@ -39,7 +56,9 @@ export const GithubProvider = ({ children }) => {
         repos: state.repos,
         userLoading: state.userLoading,
         repoLoading: state.repoLoading,
+        dispatch,
         fetchUser,
+        fetchRepos,
       }}
     >
       {children}

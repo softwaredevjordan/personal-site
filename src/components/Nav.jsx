@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FaReact, FaTabletAlt, FaEdit } from "react-icons/fa";
 import Hero from "./Hero";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 function Nav() {
   const [header, setHeader] = useState("");
   const [text, setText] = useState("");
-  const [isHome, setIsHome] = useState("");
 
   const mouseEnter = (e) => {
     const innerhtml = e.target.innerHTML;
@@ -43,24 +42,18 @@ function Nav() {
     }
   }, [header]);
 
-  useEffect(() => {
-    if (window.location.pathname === "/") {
-      setIsHome(true);
-    } else {
-      setIsHome(false);
-    }
-  }, []);
-
   const contact = "Let's Talk";
   const about = "Dive deeper";
   const projects = "View portfolio";
   const home = "Back to Home";
+
+  const location = useLocation();
   return (
     <>
       <div className="navbar bg-base-100 shadow-md mb-8 sm:pr-1">
         <div className="flex-auto mr-1">
           <Link
-            to="#"
+            to="/"
             className="btn btn-ghost normal-case p-0 text-xl md:text-4xl  md:p-1"
             onMouseEnter={mouseEnterHome}
             onMouseLeave={mouseLeave}
@@ -69,10 +62,10 @@ function Nav() {
           </Link>
         </div>
         <div className="flex-col-reverse shrink ">
-          <ul className="menu menu-horizontal text-sm md:text-xl md:pr-5 ">
-            <li className="">
+          <ul className="menu menu-horizontal text-sm md:text-xl md:pr-5">
+            <li className="md:mr-5 md:ml-5">
               <Link
-                to="/"
+                to="/about"
                 className="p-1"
                 onMouseEnter={mouseEnter}
                 onMouseLeave={mouseLeave}
@@ -81,10 +74,10 @@ function Nav() {
                 About
               </Link>
             </li>
-            <li>
+            <li className="md:mr-5 md:ml-5">
               <Link
-                to="/"
-                className="p-1"
+                to="/projects"
+                className="p-1 "
                 onMouseEnter={mouseEnter}
                 onMouseLeave={mouseLeave}
               >
@@ -92,9 +85,9 @@ function Nav() {
                 Projects
               </Link>
             </li>
-            <li>
+            <li className="mr-1 md:mr-5 md:ml-5">
               <Link
-                to="/"
+                to="/contact"
                 className="p-1"
                 onMouseEnter={mouseEnter}
                 onMouseLeave={mouseLeave}
@@ -106,7 +99,7 @@ function Nav() {
           </ul>
         </div>
       </div>
-      {isHome ? <Hero header={header} text={text} /> : null}
+      {location.pathname === "/" ? <Hero header={header} text={text} /> : null}
     </>
   );
 }
