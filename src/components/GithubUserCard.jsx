@@ -11,13 +11,13 @@ function GithubUserCard({ userName }) {
   const { avatar_url, login, bio } = user;
 
   return (
-    <div className="card card-side bg-base-100 shadow-xl card-compact w-96">
+    <div className="card card-side shadow-xl card-compact w-5/6">
       <figure>
         <img src={avatar_url} alt="" />
       </figure>
-      <div className="card-body">
-        <h1 className="card-title">{login}</h1>
-        <h3>{bio}</h3>
+      <div className="card-body bg-base-200">
+        <h1 className="card-title">GitHub Username: {login}</h1>
+        <h3>Bio: {bio}</h3>
         <div></div>
       </div>
     </div>
@@ -25,4 +25,3 @@ function GithubUserCard({ userName }) {
 }
 
 export default GithubUserCard;
-// ${GITHUB_URL}/users/${userName}
