@@ -13,7 +13,7 @@ function Projects() {
 
   return (
     <div className=" min-h-screen w-full">
-      <h1 className=" text-2xl pb-8">GitHub Account:</h1>
+      <h1 className=" text-5xl pb-8">GitHub Account:</h1>
 
       <div className="flex justify-center">
         <GithubUserCard userName="softwaredevjordan" />

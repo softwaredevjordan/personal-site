@@ -5,9 +5,7 @@ function About() {
   return (
     <div className="min-h-screen w-full">
       <div className="card m-auto  lg:w-4/5 ">
-        <h1 className="card-title justify-center text-4xl pb-8">
-          About Jordan
-        </h1>
+        <h1 className=" flex justify-center text-5xl pb-8">About Jordan</h1>
         <p className="card-body bg-secondary ">
           Jordan’s first experience with programming was making automatic doors
           using Red Stone Circuits in Minecraft. After that moment technology
