@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaReact, FaTabletAlt, FaEdit } from "react-icons/fa";
 import Hero from "./Hero";
 import { Link, useLocation } from "react-router-dom";
+import { ReactComponent as Logo } from "../svg/logo.svg";
 function Nav() {
   const [header, setHeader] = useState("");
   const [text, setText] = useState("");
@@ -49,16 +50,20 @@ function Nav() {
 
   const location = useLocation();
   return (
-    <>
-      <div className="navbar bg-base-100 shadow-md mb-8 sm:pr-1">
-        <div className="flex-auto mr-1">
+    <div className="relative ">
+      <div className="navbar bg-base-100 shadow-md mb-4 sm:pr-1">
+        <div className="flex-auto ">
           <Link
             to="/"
-            className="btn btn-ghost normal-case p-0 text-xl md:text-4xl  md:p-1"
+            className="btn btn-ghost "
             onMouseEnter={mouseEnterHome}
             onMouseLeave={mouseLeave}
           >
-            SDJ
+            <Logo
+              height="50px"
+              width="50px"
+              className="self-stretch box-border "
+            />
           </Link>
         </div>
         <div className="flex-col-reverse shrink ">
@@ -100,7 +105,7 @@ function Nav() {
         </div>
       </div>
       {location.pathname === "/" ? <Hero header={header} text={text} /> : null}
-    </>
+    </div>
   );
 }
 

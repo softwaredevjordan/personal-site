@@ -12,10 +12,9 @@ function Projects() {
   }, []);
 
   return (
-    <>
-      <div className="flex">
-        <h1 className=" text-2xl pb-8">GitHub Account:</h1>
-      </div>
+    <div className=" min-h-screen w-full">
+      <h1 className=" text-2xl pb-8">GitHub Account:</h1>
+
       <div className="flex justify-center">
         <GithubUserCard userName="softwaredevjordan" />
       </div>
@@ -23,7 +22,7 @@ function Projects() {
         <h1 className="text-2xl pt-8 pb-5">Repos:</h1>
       </div>
       <Repos />
-    </>
+    </div>
   );
 }
 

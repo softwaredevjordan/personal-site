@@ -11,13 +11,15 @@ function GithubUserCard({ userName }) {
   const { avatar_url, login, bio } = user;
 
   return (
-    <div className="card card-side shadow-xl card-compact w-5/6">
+    <div className="card lg:card-side shadow-xl  w-5/6">
       <figure>
         <img src={avatar_url} alt="" />
       </figure>
       <div className="card-body bg-base-200">
-        <h1 className="card-title">GitHub Username: {login}</h1>
-        <h3>Bio: {bio}</h3>
+        <h1 className="card-title text-xl">GitHub Username:</h1>
+        <h1 className="card-title text-3xl">{login}</h1>
+        <h1 className="text-xl">Bio:</h1>
+        <h1 className="text-xl">{bio}</h1>
         <div></div>
       </div>
     </div>
