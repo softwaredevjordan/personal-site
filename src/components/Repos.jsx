@@ -13,18 +13,17 @@ function Repos() {
   return (
     <div className="grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 p-5 pb-10 ">
       {repos.map((repo) => (
-        <div className="card bg-secondary">
-          <h2 className="card-title pl-2">Repo: {repo.name}</h2>
-          <h3 className="pl-2">Language: {repo.language}</h3>
-          <p className="pl-2">Description: {repo.description}</p>
-          <a
-            className="p-4"
-            rel="noopener noreferrer"
-            href={repo.html_url}
-            target="_blank"
-          >
-            <button className="btn btn-accent rounded ">View Repo</button>
-          </a>
+        <div className=" flex-col place-content-between card bg-accent">
+          <div className=" p-5">
+            <h2 className="card-title">Repo: {repo.name}</h2>
+            <h3 className="">Language: {repo.language}</h3>
+            <p className="">Description: {repo.description}</p>
+          </div>
+          <div className="p-5">
+            <a rel="noopener noreferrer" href={repo.html_url} target="_blank">
+              <button className=" btn btn-secondary rounded ">View Repo</button>
+            </a>
+          </div>
         </div>
       ))}
     </div>

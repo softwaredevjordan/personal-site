@@ -6,7 +6,7 @@ import Resume from "../docs/resume.docx";
 function Footer() {
   const footerYear = new Date().getFullYear();
   return (
-    <footer className="bg-secondary p-5 flex justify-between sticky  bottom-0 left-0 right-0">
+    <footer className="bg-accent p-5 flex justify-between sticky  bottom-0 left-0 right-0">
       <div className="flex flex-col pr-3">
         <h4 className="">
           Short on time? Here are the most important Links to look at.
